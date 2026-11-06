@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akissi Pâtisserie – Gâteaux faits maison à Cocody, Abidjan</title>
+<meta name="description" content="Gâteaux d’anniversaire, pièces de mariage, petits gâteaux et viennoiseries faits maison à Cocody Riviera Palmeraie, Abidjan. Commandez sur WhatsApp.">
+<meta name="theme-color" content="#fbf6ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎂%3C/text%3E%3C/svg%3E">
+
+<!-- Polices Google : 3 familles seulement, une seule graisse chacune (pour rester léger) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Jost:wght@400;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   COULEURS ET POLICES (modifiables ici, en haut)
+   ===================================================== */
+:root{
+  --creme:#fbf6ee;        /* fond du site */
+  --blanc:#ffffff;        /* cartes */
+  --brun:#4a2a1e;         /* titres, boutons, pied de page */
+  --texte:#3a2318;        /* texte courant */
+  --rose:#f4cfc9;         /* rose poudré (bandeau des prix, taches) */
+  --dore:#c29a3b;         /* doré : traits fins, étoiles, contours */
+  --peche:#f9dcc0;        /* petites touches de couleur (saveurs) */
+  --pistache:#d9e5c5;
+  --mangue:#f6e29a;
+  --ombre:rgba(74,42,30,.16) -14px 10px 40px 0;  /* ombre douce des cartes */
+
+  --serif:"Playfair Display", Georgia, "Times New Roman", serif;
+  --sans:"Jost", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --script:"Caveat", "Segoe Script", "Brush Script MT", cursive;
+  --cadre:1120px;
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--texte);
+  background:var(--creme);overflow-x:hidden;
+  padding-bottom:84px;               /* place pour la barre fixe du mobile */
+}
+img{display:block;max-width:100%;height:auto}
+ul{list-style:none;padding:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--dore);outline-offset:3px}
+section[id]{scroll-margin-top:72px}
+.cadre{width:min(100% - 40px, var(--cadre));margin-inline:auto}
+.saut{position:absolute;left:-999px;top:8px;background:var(--brun);color:#fff;padding:10px 16px;border-radius:8px;z-index:200}
+.saut:focus{left:8px}
+.ico{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.u{display:inline-block}            /* garde un groupe de mots sur la même ligne (évite un mot seul) */
+
+/* ===== Titres ===== */
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--brun)}
+h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
+.script{font-family:var(--script);font-weight:600;font-size:clamp(1.7rem,6.5vw,2.3rem);line-height:1.1;color:var(--brun)}
+.intro{max-width:34rem}
+.intro .script{margin-top:6px}
+
+/* ===== Boutons (pilule 32px comme dans l'inspiration) ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:0 28px;border-radius:32px;border:2px solid transparent;
+  font:500 .78rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;text-align:center;
+  transition:transform .2s ease,background-color .2s ease;
+}
+.btn:active{transform:scale(.97)}
+.btn--plein{background:var(--brun);color:#fff}
+.btn--contour{border-color:var(--dore);color:var(--brun);background:transparent}
+.btn--petit{min-height:44px;padding:0 20px}
+@media (hover:hover){
+  .btn--plein:hover{background:#6b3b29}
+  .btn--contour:hover{background:rgba(194,154,59,.14)}
+}
+
+/* ===== En-tête ===== */
+.entete{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.97);border-bottom:1px solid rgba(74,42,30,.12)}
+.entete .cadre{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;flex-direction:column;line-height:1;text-decoration:none;color:var(--brun)}
+.logo b{font:600 1.65rem/1 var(--serif)}
+.logo small{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;margin-top:4px;font-weight:500}
+.nav{display:none}
+.entete-cta{display:none}
+.burger{width:44px;height:44px;border:0;background:transparent;color:var(--brun);display:grid;place-items:center;cursor:pointer;border-radius:50%}
+.burger .ico{width:26px;height:26px}
+.menu{border-top:1px solid rgba(74,42,30,.12);background:var(--creme)}
+.menu a{display:block;padding:16px 20px;text-decoration:none;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--brun);border-bottom:1px solid rgba(74,42,30,.08)}
+@media (min-width:900px){
+  .nav{display:flex;gap:32px}
+  .nav a{text-decoration:none;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--brun);padding:8px 0;border-bottom:2px solid transparent}
+  .nav a:hover{border-bottom-color:var(--dore)}
+  .entete-cta{display:inline-flex}
+  .burger,.menu{display:none!important}
+}
+
+/* ===== Barre fixe mobile : Appeler + WhatsApp ===== */
+.barre{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+  background:rgba(251,246,238,.97);border-top:1px solid rgba(74,42,30,.12);
+}
+.barre .btn{flex:1;min-height:48px;padding:0 12px}
+@media (min-width:900px){.barre{display:none}body{padding-bottom:0}}
+
+/* ===== Décors : taches de couleur, vagues, feuilles ===== */
+.blob{position:absolute;pointer-events:none}
+.vague{position:absolute;left:0;right:0;bottom:calc(100% - 1px);width:100%;height:clamp(36px,7vw,90px);display:block;pointer-events:none}
+.branche{position:absolute;width:120px;height:240px;color:var(--brun);pointer-events:none}
+
+/* ===== Accueil ===== */
+.hero{position:relative;padding:28px 0 56px}
+.hero-grille{display:grid;gap:36px}
+.hero-photo{position:relative;order:-1;width:100%;max-width:440px;justify-self:center;margin:8px 0}
+.hero-photo .blob{z-index:0}
+.blob--rose{width:112%;left:-8%;top:-10%;color:var(--rose)}
+.blob--mangue{width:34%;right:0;bottom:-6%;color:var(--mangue)}
+.hero-photo .branche{left:-46px;bottom:-34px;transform:rotate(-14deg);z-index:0}
+.cadre-photo{position:relative;z-index:1;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:var(--peche);box-shadow:var(--ombre)}
+.cadre-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero h1{font-size:clamp(2.55rem,11.5vw,4.8rem);line-height:1.04}
+.hero h1 span{display:block}
+.hero .script{font-size:clamp(2rem,8.5vw,3rem);margin-top:6px}
+.hero p.texte{margin-top:18px;max-width:30rem;font-size:1.04rem}
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+.statut{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:8px 16px;border-radius:16px;background:var(--blanc);font-size:.8rem;letter-spacing:.06em}
+.statut i{width:10px;height:10px;border-radius:50%;background:#9b8b84;flex:none}
+.statut.ouvert i{background:#5aa56a}
+.saveurs{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tag{padding:6px 14px;border-radius:16px;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--brun)}
+.tag--1{background:var(--mangue)}.tag--2{background:var(--rose)}.tag--3{background:var(--pistache)}.tag--4{background:var(--peche)}
+@media (min-width:640px){.actions{flex-direction:row;flex-wrap:wrap}}
+@media (min-width:900px){
+  .hero{padding:56px 0 72px}
+  .hero-grille{grid-template-columns:1.05fr .95fr;align-items:center;gap:56px}
+  .hero-photo{order:0}
+  .blob--mangue{right:-8%}
+  .cadre-photo{aspect-ratio:4/5}
+}
+/* Les 2 taches de l'accueil flottent doucement (transform seulement) */
+@keyframes flotte{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(0,-10px,0) rotate(3deg)}}
+.hero-photo .blob{animation:flotte 10s ease-in-out infinite}
+.hero-photo .blob--mangue{animation-duration:13s}
+
+/* ===== Les 4 prix de départ (calculés automatiquement) ===== */
+.des{display:grid;grid-template-columns:1fr 1fr;margin-top:44px;background:var(--blanc);border-radius:8px;box-shadow:var(--ombre);overflow:hidden}
+.des div{padding:18px 16px;border-bottom:1px solid rgba(74,42,30,.1)}
+.des div:nth-child(odd){border-right:1px solid rgba(74,42,30,.1)}
+.des div:nth-last-child(-n+2){border-bottom:0}
+.des span{display:block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+.des strong{display:block;margin-top:4px;font:600 1.2rem/1.2 var(--serif);color:var(--brun)}
+@media (min-width:760px){
+  .des{grid-template-columns:repeat(4,1fr)}
+  .des div{border-bottom:0!important;border-right:1px solid rgba(74,42,30,.1)}
+  .des div:last-child{border-right:0}
+}
+
+/* ===== Sections ===== */
+.bloc{position:relative;padding:72px 0}
+.bloc--rose{background:var(--rose)}
+.bloc--creme{background:var(--creme)}
+
+/* ===== Galerie ===== */
+.filtres{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 22px}
+.filtre{min-height:44px;padding:0 18px;border-radius:32px;border:1.5px solid rgba(74,42,30,.3);background:transparent;color:var(--brun);font:500 .74rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,color .2s}
+.filtre[aria-pressed="true"]{background:var(--brun);border-color:var(--brun);color:#fff}
+.grille{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (min-width:640px){.grille{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media (min-width:1000px){.grille{grid-template-columns:repeat(4,1fr)}}
+.tuile{
+  position:relative;display:block;width:100%;aspect-ratio:4/5;padding:0;border:0;border-radius:8px;overflow:hidden;
+  background:var(--c,var(--peche));cursor:zoom-in;box-shadow:var(--ombre);text-align:left;color:#fff;
+  animation:apparait .35s ease both;
+}
+.tuile[data-cat="mariage"]{--c:var(--rose)}
+.tuile[data-cat="petits"]{--c:var(--pistache)}
+.tuile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.legende{position:absolute;left:0;right:0;bottom:0;padding:36px 12px 12px;background:linear-gradient(to top,rgba(40,22,14,.78),rgba(40,22,14,0))}
+.legende b{display:block;font:600 .98rem/1.2 var(--serif)}
+.legende small{display:block;margin-top:3px;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+@media (hover:hover){.tuile:hover img{transform:scale(1.05)}}
+@keyframes apparait{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+
+/* Photo agrandie */
+.fige{overflow:hidden}
+.lb{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:rgba(40,22,14,.9);visibility:hidden;opacity:0;transition:opacity .25s ease,visibility .25s ease}
+.lb.ouvert{visibility:visible;opacity:1}
+.lb-boite{display:flex;flex-direction:column;align-items:center;gap:14px;transform:scale(.96);transition:transform .25s ease}
+.lb.ouvert .lb-boite{transform:none}
+.lb-cadre{position:relative;width:min(86vw,calc((100vh - 200px) * .8),460px);aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:var(--peche)}
+.lb-cadre img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lb-legende{text-align:center;color:#fff;padding:0 16px}
+.lb-legende b{display:block;font:600 1.3rem/1.2 var(--serif)}
+.lb-legende small{display:block;margin:4px 0 14px;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase}
+.lb .btn--plein{background:var(--creme);color:var(--brun)}   /* bouton clair sur fond sombre */
+.lb-bouton{position:absolute;width:46px;height:46px;border-radius:50%;border:0;background:rgba(251,246,238,.95);color:var(--brun);display:grid;place-items:center;cursor:pointer}
+.lb-fermer{top:12px;right:12px}
+.lb-prec{left:8px;top:calc(50% - 60px)}
+.lb-suiv{right:8px;top:calc(50% - 60px)}
+
+/* ===== Prix : onglets ===== */
+.onglets{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 20px}
+.onglet{min-height:44px;padding:0 16px;border-radius:32px;border:1.5px solid var(--brun);background:transparent;color:var(--brun);font:500 .72rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,color .2s}
+.onglet[aria-selected="true"]{background:var(--brun);color:#fff}
+.panneau{max-width:620px;background:var(--blanc);border-radius:8px;box-shadow:var(--ombre);padding:6px 20px;animation:apparait .3s ease both}
+.ligne{display:flex;align-items:baseline;gap:10px;padding:16px 0;border-bottom:1px solid rgba(74,42,30,.12)}
+.ligne:last-child{border-bottom:0}
+.ligne .nom{font:600 1.1rem/1.25 var(--serif);color:var(--brun)}
+.ligne small{display:block;font-size:.82rem;font-family:var(--sans);font-weight:400;color:var(--texte)}
+.ligne .points{flex:1;min-width:12px;border-bottom:2px dotted rgba(194,154,59,.8);transform:translateY(-5px)}
+.prix{font:500 1.02rem/1.2 var(--sans);white-space:nowrap;color:var(--brun)}
+.note-prix{max-width:620px;margin-top:18px;font-size:.95rem}
+.bloc--rose .btn{margin-top:22px}
+
+/* ===== Comment commander ===== */
+.etapes{display:grid;gap:16px;margin-top:32px}
+.etape{display:flex;gap:16px;align-items:flex-start;background:var(--blanc);border-radius:8px;box-shadow:var(--ombre);padding:20px 18px}
+.etape .num{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--dore);display:grid;place-items:center;font:600 1.2rem/1 var(--serif);color:var(--brun)}
+.etape h3{font-size:1.2rem;line-height:1.25}
+.etape p{margin-top:4px;font-size:.96rem}
+.delais{margin-top:22px;max-width:40rem;font-size:.98rem}
+.bloc--commander .branche{display:none}
+@media (min-width:900px){
+  .etapes{grid-template-columns:repeat(3,1fr);gap:20px}
+  .etape{flex-direction:column;padding:26px 22px}
+  .bloc--commander .branche{display:block;right:60px;top:36px;transform:rotate(14deg);opacity:.6}
+}
+
+/* ===== Avis ===== */
+.avis-rang{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:30px -20px 0;padding:14px 20px 30px;-webkit-overflow-scrolling:touch}
+.avis{flex:0 0 82%;max-width:340px;scroll-snap-align:center;background:var(--blanc);border-radius:8px;box-shadow:0 6px 18px rgba(74,42,30,.12);padding:22px 20px;display:flex;flex-direction:column}
+.etoiles{color:var(--dore);letter-spacing:.12em;font-size:1.05rem}
+.etoiles .vide{color:rgba(194,154,59,.35)}
+.avis blockquote{margin:12px 0 16px;font-size:1rem;line-height:1.6;flex:1}
+.avis cite{font-style:normal;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--brun)}
+.astuce{margin-top:-8px;font-size:.85rem}
+@media (min-width:900px){
+  .avis-rang{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;margin:34px 0 0;padding:6px 0}
+  .avis{flex:none;max-width:none}
+  .astuce{display:none}
+}
+
+/* ===== Contact + carte ===== */
+.contact-grille{display:grid;gap:32px;margin-top:30px}
+.horaires{background:var(--blanc);border-radius:8px;box-shadow:var(--ombre);padding:6px 20px;max-width:460px}
+.h-ligne{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid rgba(74,42,30,.12)}
+.h-ligne:last-child{border-bottom:0}
+.h-ligne dt{font-weight:500}
+.h-ligne.auj dt::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dore);margin-right:8px}
+.adresse{display:flex;gap:10px;align-items:flex-start;margin:20px 0 4px;font-size:1.02rem}
+.adresse .ico{margin-top:3px;color:var(--brun)}
+.liens-contact{display:flex;flex-direction:column;gap:12px;margin-top:22px;max-width:460px}
+.carte{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:var(--pistache);box-shadow:var(--ombre);display:grid;place-items:center;text-align:center;padding:20px}
+.carte iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.carte p{margin:8px 0 16px;font:600 1.1rem/1.3 var(--serif);color:var(--brun)}
+.lien-itineraire{display:inline-block;margin-top:14px;font-size:.9rem;font-weight:500;color:var(--brun)}
+@media (min-width:900px){.contact-grille{grid-template-columns:1fr 1fr;gap:56px;align-items:start}.liens-contact{flex-direction:row;flex-wrap:wrap}}
+
+/* ===== Pied de page ===== */
+.pied{position:relative;background:var(--brun);color:var(--creme);padding:64px 0 40px;text-align:center}
+.pied .vague{color:var(--brun)}
+.pied .logo{align-items:center;color:var(--creme)}
+.pied .logo b{font-size:2rem}
+.pied .script{color:var(--creme);margin-top:14px}
+.pied-liens{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;margin:26px 0}
+.pied-liens a{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.pied small{display:block;font-size:.8rem;opacity:.8}
+
+/* ===== Respect de "réduire les animations" ===== */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Petites images dessinées en code (icônes, taches de couleur, feuille) : ne pas toucher -->
+<svg style="position:absolute;width:0;height:0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+    <symbol id="i-tel" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-g" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-d" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+
+    <!-- Tache de couleur organique -->
+    <symbol id="blob" viewBox="0 0 200 200"><path fill="currentColor" d="M150 30C185 55 195 105 170 145C145 185 85 195 45 165C5 135 0 75 35 40C65 10 115 5 150 30Z"/></symbol>
+
+    <!-- Feuille dessinée au trait (inspiration : illustrations botaniques) -->
+    <g id="paire" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path vector-effect="non-scaling-stroke" d="M0 0c14-14 36-16 52-6c-16 14-38 16-52 6z"/>
+      <path vector-effect="non-scaling-stroke" d="M0 0l46-5"/>
+      <path vector-effect="non-scaling-stroke" d="M0 0c-14-14-36-16-52-6c16 14 38 16 52 6z"/>
+      <path vector-effect="non-scaling-stroke" d="M0 0l-46-5"/>
+    </g>
+    <symbol id="branche" viewBox="0 0 120 240">
+      <path vector-effect="non-scaling-stroke" d="M60 238V8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <use href="#paire" transform="translate(60 205)"/>
+      <use href="#paire" transform="translate(60 172) scale(.95)"/>
+      <use href="#paire" transform="translate(60 140) scale(.88)"/>
+      <use href="#paire" transform="translate(60 109) scale(.8)"/>
+      <use href="#paire" transform="translate(60 80) scale(.7)"/>
+      <use href="#paire" transform="translate(60 54) scale(.58)"/>
+      <use href="#paire" transform="translate(60 32) scale(.44)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="saut" href="#contenu">Aller au contenu</a>
+
+<!-- ================= EN-TÊTE ================= -->
+<header class="entete">
+  <div class="cadre">
+    <a class="logo" href="#accueil" aria-label="Akissi Pâtisserie, retour à l’accueil"><b>Akissi</b><small>Pâtisserie</small></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#creations">Créations</a>
+      <a href="#prix">Prix</a>
+      <a href="#commander">Commander</a>
+      <a href="#avis">Avis</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn--plein btn--petit entete-cta" data-wa="">Commander</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><svg class="ico"><use href="#i-menu"/></svg></button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Menu mobile" hidden>
+    <a href="#creations">Créations</a>
+    <a href="#prix">Prix</a>
+    <a href="#commander">Commander</a>
+    <a href="#avis">Avis</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="contenu">
+
+<!-- ================= ACCUEIL ================= -->
+<section class="hero" id="accueil">
+  <div class="cadre">
+    <div class="hero-grille">
+      <div class="hero-texte">
+        <h1><span>Des gâteaux</span><span>faits maison</span></h1>
+        <p class="script">avec le goût d’ici</p>
+        <!-- ✏️ TEXTE D'ACCUEIL -->
+        <p class="texte">Gâteaux d’anniversaire, pièces de mariage, petits gâteaux et viennoiseries, préparés à la commande dans notre atelier de Cocody Riviera Palmeraie.</p>
+        <div class="actions">
+          <a class="btn btn--plein" data-wa=""><svg class="ico"><use href="#i-wa"/></svg>Commander sur WhatsApp</a>
+          <a class="btn btn--contour" href="#creations">Voir nos créations</a>
+        </div>
+        <p class="statut" data-statut hidden><i></i><span data-statut-texte></span></p>
+        <ul class="saveurs" aria-label="Nos saveurs signature">
+          <li class="tag tag--1">Coco-ananas</li>
+          <li class="tag tag--2">Banane-chocolat</li>
+          <li class="tag tag--3">Gingembre-citron</li>
+          <li class="tag tag--4">Mangue-passion</li>
+        </ul>
+      </div>
+
+      <figure class="hero-photo">
+        <svg class="branche" aria-hidden="true"><use href="#branche"/></svg>
+        <svg class="blob blob--rose" viewBox="0 0 200 200" aria-hidden="true"><use href="#blob"/></svg>
+        <svg class="blob blob--mangue" viewBox="0 0 200 200" aria-hidden="true"><use href="#blob"/></svg>
+        <div class="cadre-photo">
+          <img src="accueil.jpg" alt="Gâteau, cupcakes et croissants sur une table claire" fetchpriority="high" onerror="this.hidden=true">
+        </div>
+      </figure>
+    </div>
+
+    <!-- Prix de départ : calculés automatiquement à partir de la section Prix -->
+    <div class="des" aria-label="Prix à partir de">
+      <div><span>Viennoiseries dès</span><strong data-des="p-vienn"></strong></div>
+      <div><span>Petits gâteaux dès</span><strong data-des="p-petits"></strong></div>
+      <div><span>Anniversaire dès</span><strong data-des="p-anniv"></strong></div>
+      <div><span>Mariage dès</span><strong data-des="p-mariage"></strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CRÉATIONS (galerie + filtres) ================= -->
+<section class="bloc bloc--creme" id="creations">
+  <div class="cadre">
+    <div class="intro">
+      <h2><span class="u">Un gâteau</span> <span class="u">pour chaque</span> <span class="u">occasion</span></h2>
+      <p class="script">touchez une photo pour l’agrandir</p>
+    </div>
+
+    <div class="filtres" role="group" aria-label="Filtrer les créations">
+      <button class="filtre" type="button" data-filtre="tout" aria-pressed="true">Tout</button>
+      <button class="filtre" type="button" data-filtre="anniversaire" aria-pressed="false">Anniversaire</button>
+      <button class="filtre" type="button" data-filtre="mariage" aria-pressed="false">Mariage</button>
+      <button class="filtre" type="button" data-filtre="petits" aria-pressed="false">Petits gâteaux</button>
+    </div>
+
+    <!-- ✏️ GALERIE : une tuile = une photo. data-cat = anniversaire | mariage | petits
+         Le nom du fichier (src) doit être identique à celui du dépôt GitHub. -->
+    <div class="grille" id="grille">
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Coco-ananas" aria-label="Agrandir : gâteau coco-ananas">
+        <img src="anniv-coco-ananas.jpg" alt="Gâteau d’anniversaire coco-ananas" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Coco-ananas</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Banane-chocolat" aria-label="Agrandir : gâteau banane-chocolat">
+        <img src="anniv-banane-chocolat.jpg" alt="Gâteau d’anniversaire banane-chocolat" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Banane-chocolat</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Gingembre-citron" aria-label="Agrandir : gâteau gingembre-citron">
+        <img src="anniv-gingembre-citron.jpg" alt="Gâteau d’anniversaire gingembre-citron" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Gingembre-citron</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Mangue-passion" aria-label="Agrandir : gâteau mangue-passion">
+        <img src="anniv-mangue-passion.jpg" alt="Gâteau d’anniversaire mangue-passion" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mangue-passion</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Gâteau rose poudré" aria-label="Agrandir : gâteau rose poudré">
+        <img src="anniv-rose.jpg" alt="Gâteau d’anniversaire rose poudré à la chantilly" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Gâteau rose poudré</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="mariage" data-nom="Mariage, 2 étages" aria-label="Agrandir : gâteau de mariage 2 étages">
+        <img src="mariage-2-etages.jpg" alt="Gâteau de mariage à 2 étages" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mariage, 2 étages</b><small>Mariage</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="mariage" data-nom="Mariage, 3 étages" aria-label="Agrandir : gâteau de mariage 3 étages">
+        <img src="mariage-3-etages.jpg" alt="Gâteau de mariage à 3 étages" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mariage, 3 étages</b><small>Mariage</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="mariage" data-nom="Mariage, fleurs fraîches" aria-label="Agrandir : gâteau de mariage aux fleurs fraîches">
+        <img src="mariage-fleurs.jpg" alt="Gâteau de mariage décoré de fleurs fraîches" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mariage, fleurs fraîches</b><small>Mariage</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="petits" data-nom="Cupcakes" aria-label="Agrandir : cupcakes">
+        <img src="petits-cupcakes.jpg" alt="Cupcakes glacés sur un présentoir" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Cupcakes</b><small>Petits gâteaux</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="petits" data-nom="Mini-tartes" aria-label="Agrandir : mini-tartes">
+        <img src="petits-mini-tartes.jpg" alt="Mini-tartes aux fruits" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mini-tartes</b><small>Petits gâteaux</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="petits" data-nom="Plateau événement" aria-label="Agrandir : plateau événement">
+        <img src="petits-plateau.jpg" alt="Plateau de petits gâteaux assortis pour un événement" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Plateau événement</b><small>Petits gâteaux</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="petits" data-nom="Boîte cadeau" aria-label="Agrandir : boîte cadeau">
+        <img src="petits-boite.jpg" alt="Boîte cadeau de 6 cupcakes avec un ruban" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Boîte cadeau</b><small>Petits gâteaux</small></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRIX (onglets) ================= -->
+<section class="bloc bloc--rose" id="prix">
+  <svg class="vague" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="color:var(--rose)"><path fill="currentColor" d="M0 60C240 120 480 0 720 50C960 100 1200 10 1440 60L1440 120L0 120Z"/></svg>
+  <div class="cadre">
+    <div class="intro">
+      <h2><span class="u">Des prix</span> <span class="u">clairs</span></h2>
+      <p class="script">pas de mauvaise surprise</p>
+    </div>
+
+    <!-- ✏️ PRIX : modifier uniquement le chiffre dans chaque <span class="prix">.
+         Les prix « dès » de l'accueil se mettent à jour tout seuls. -->
+    <div class="onglets" role="tablist" aria-label="Catégories de prix">
+      <button class="onglet" role="tab" type="button" id="o-anniv" aria-controls="p-anniv" aria-selected="true" data-msg="Bonjour Akissi, je voudrais commander un gâteau d’anniversaire.">Anniversaire</button>
+      <button class="onglet" role="tab" type="button" id="o-mariage" aria-controls="p-mariage" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je prépare un mariage et je voudrais un devis pour un gâteau.">Mariage</button>
+      <button class="onglet" role="tab" type="button" id="o-petits" aria-controls="p-petits" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je voudrais commander des petits gâteaux.">Petits gâteaux</button>
+      <button class="onglet" role="tab" type="button" id="o-vienn" aria-controls="p-vienn" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je voudrais commander des viennoiseries.">Viennoiseries</button>
+    </div>
+
+    <div class="panneau" role="tabpanel" id="p-anniv" aria-labelledby="o-anniv">
+      <div class="ligne"><span class="nom">Petit<small>6 à 8 parts</small></span><span class="points"></span><span class="prix">18&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Moyen<small>12 à 15 parts</small></span><span class="points"></span><span class="prix">30&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Grand<small>20 à 25 parts</small></span><span class="points"></span><span class="prix">45&nbsp;000 FCFA</span></div>
+    </div>
+
+    <div class="panneau" role="tabpanel" id="p-mariage" aria-labelledby="o-mariage">
+      <div class="ligne"><span class="nom">2 étages<small>30 parts</small></span><span class="points"></span><span class="prix">75&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">3 étages<small>60 parts</small></span><span class="points"></span><span class="prix">140&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Sur mesure<small>Dites-nous votre idée</small></span><span class="points"></span><span class="prix">Sur devis</span></div>
+    </div>
+
+    <div class="panneau" role="tabpanel" id="p-petits" aria-labelledby="o-petits">
+      <div class="ligne"><span class="nom">Cupcakes<small>Boîte de 6</small></span><span class="points"></span><span class="prix">6&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Mini-tartes<small>Boîte de 6</small></span><span class="points"></span><span class="prix">7&nbsp;500 FCFA</span></div>
+      <div class="ligne"><span class="nom">Plateau événement<small>30 pièces</small></span><span class="points"></span><span class="prix">32&nbsp;000 FCFA</span></div>
+    </div>
+
+    <div class="panneau" role="tabpanel" id="p-vienn" aria-labelledby="o-vienn">
+      <div class="ligne"><span class="nom">Croissant</span><span class="points"></span><span class="prix">500 FCFA</span></div>
+      <div class="ligne"><span class="nom">Pain au chocolat</span><span class="points"></span><span class="prix">600 FCFA</span></div>
+      <div class="ligne"><span class="nom">Pain au coco</span><span class="points"></span><span class="prix">400 FCFA</span></div>
+    </div>
+
+    <!-- ✏️ LIVRAISON (écrit une seule fois, ici) -->
+    <p class="note-prix">Livraison à Abidjan : 2&nbsp;000 FCFA dans Cocody, 3&nbsp;500 FCFA ailleurs, offerte à partir de 50&nbsp;000 FCFA d’achat.</p>
+
+    <a class="btn btn--plein" id="cta-prix" data-wa=""><svg class="ico"><use href="#i-wa"/></svg>Commander sur WhatsApp</a>
+  </div>
+</section>
+
+<!-- ================= COMMENT COMMANDER ================= -->
+<section class="bloc bloc--creme bloc--commander" id="commander">
+  <svg class="vague" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="color:var(--creme)"><path fill="currentColor" d="M0 70C220 10 460 110 720 60C980 10 1200 100 1440 50L1440 120L0 120Z"/></svg>
+  <svg class="branche" aria-hidden="true"><use href="#branche"/></svg>
+  <div class="cadre">
+    <div class="intro">
+      <h2><span class="u">Commander,</span> <span class="u">c’est simple</span></h2>
+    </div>
+    <div class="etapes">
+      <div class="etape">
+        <span class="num" aria-hidden="true">1</span>
+        <div><h3>Écrivez-nous</h3><p>Envoyez un message WhatsApp avec la saveur, la taille et la date souhaitées.</p></div>
+      </div>
+      <div class="etape">
+        <span class="num" aria-hidden="true">2</span>
+        <div><h3>On confirme</h3><p>Nous vous répondons avec le prix et le créneau de préparation.</p></div>
+      </div>
+      <div class="etape">
+        <span class="num" aria-hidden="true">3</span>
+        <div><h3>Retrait ou livraison</h3><p>Passez le récupérer à la boutique, ou nous le livrons à Abidjan.</p></div>
+      </div>
+    </div>
+    <!-- ✏️ DÉLAIS (écrits une seule fois, ici) -->
+    <p class="delais"><strong>Délais :</strong> 48 heures à l’avance pour les gâteaux, 7 jours pour les mariages.</p>
+  </div>
+</section>
+
+<!-- ================= AVIS ================= -->
+<section class="bloc bloc--creme" id="avis" style="padding-top:8px">
+  <div class="cadre">
+    <div class="intro">
+      <h2><span class="u">Ils ont goûté,</span> <span class="u">ils en parlent</span></h2>
+    </div>
+    <!-- ✏️ AVIS : une carte = un avis. Pour 4 étoiles sur 5 : 4 étoiles pleines + <span class="vide">★</span> -->
+    <div class="avis-rang" tabindex="0" aria-label="Avis clients (faites glisser)">
+      <figure class="avis">
+        <p class="etoiles" role="img" aria-label="5 étoiles sur 5">★★★★★</p>
+        <blockquote>« Le gâteau de notre mariage était magnifique, tous les invités ont redemandé. »</blockquote>
+        <figcaption><cite>Estelle &amp; Marc, Cocody</cite></figcaption>
+      </figure>
+      <figure class="avis">
+        <p class="etoiles" role="img" aria-label="5 étoiles sur 5">★★★★★</p>
+        <blockquote>« Livré à l’heure, encore chaud pour les croissants. »</blockquote>
+        <figcaption><cite>Ibrahim, Angré</cite></figcaption>
+      </figure>
+      <figure class="avis">
+        <p class="etoiles" role="img" aria-label="5 étoiles sur 5">★★★★★</p>
+        <blockquote>« Le coco-ananas, une tuerie. Mes collègues m’ont demandé l’adresse. »</blockquote>
+        <figcaption><cite>Nadège, Plateau</cite></figcaption>
+      </figure>
+      <figure class="avis">
+        <p class="etoiles" role="img" aria-label="4 étoiles sur 5">★★★★<span class="vide">★</span></p>
+        <blockquote>« Un peu d’attente le samedi matin, mais ça vaut le coup. »</blockquote>
+        <figcaption><cite>Kouadio, Riviera</cite></figcaption>
+      </figure>
+    </div>
+    <p class="astuce">Faites glisser pour lire les autres avis.</p>
+  </div>
+</section>
+
+<!-- ================= VENIR NOUS VOIR ================= -->
+<section class="bloc bloc--creme" id="contact" style="padding-top:24px">
+  <div class="cadre">
+    <div class="intro">
+      <h2><span class="u">Venez</span> <span class="u">nous voir</span></h2>
+      <p class="script">la porte est ouverte</p>
+    </div>
+
+    <div class="contact-grille">
+      <div>
+        <!-- Les horaires s'écrivent ici automatiquement depuis le bloc RÉGLAGES (en bas) -->
+        <dl class="horaires" id="horaires"></dl>
+        <p class="adresse"><svg class="ico"><use href="#i-pin"/></svg><span data-adresse></span></p>
+        <div class="liens-contact">
+          <a class="btn btn--plein" data-tel><svg class="ico"><use href="#i-tel"/></svg>Appeler <span data-tel-texte></span></a>
+          <a class="btn btn--contour" data-wa=""><svg class="ico"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="btn btn--contour" data-insta><svg class="ico"><use href="#i-insta"/></svg><span data-insta-texte></span></a>
+        </div>
+      </div>
+
+      <div>
+        <!-- La carte ne se charge qu'au clic : ça économise la data du visiteur -->
+        <div class="carte" id="carte">
+          <div>
+            <svg class="ico" style="width:34px;height:34px;color:var(--brun)"><use href="#i-pin"/></svg>
+            <p data-adresse></p>
+            <button class="btn btn--plein btn--petit" id="carte-btn" type="button">Afficher la carte</button>
+          </div>
+        </div>
+        <a class="lien-itineraire" data-itineraire target="_blank" rel="noopener">Ouvrir l’itinéraire dans Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= PIED DE PAGE ================= -->
+<footer class="pied">
+  <svg class="vague" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 50C260 110 500 0 760 55C1000 105 1220 20 1440 70L1440 120L0 120Z"/></svg>
+  <div class="cadre">
+    <a class="logo" href="#accueil"><b>Akissi</b><small>Pâtisserie</small></a>
+    <p class="script">des gâteaux faits maison, avec le goût d’ici</p>
+    <div class="pied-liens">
+      <a data-wa=""><svg class="ico"><use href="#i-wa"/></svg>WhatsApp</a>
+      <a data-tel><svg class="ico"><use href="#i-tel"/></svg>Appeler</a>
+      <a data-insta><svg class="ico"><use href="#i-insta"/></svg>Instagram</a>
+    </div>
+    <small>© <span id="annee">2026</span> Akissi Pâtisserie · Cocody Riviera Palmeraie, Abidjan</small>
+  </div>
+</footer>
+
+<!-- Barre fixe sur téléphone -->
+<div class="barre">
+  <a class="btn btn--contour" data-tel><svg class="ico"><use href="#i-tel"/></svg>Appeler</a>
+  <a class="btn btn--plein" data-wa=""><svg class="ico"><use href="#i-wa"/></svg>WhatsApp</a>
+</div>
+
+<!-- Photo agrandie -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo agrandie">
+  <button class="lb-bouton lb-fermer" id="lb-fermer" type="button" aria-label="Fermer"><svg class="ico"><use href="#i-x"/></svg></button>
+  <button class="lb-bouton lb-prec" id="lb-prec" type="button" aria-label="Photo précédente"><svg class="ico"><use href="#i-g"/></svg></button>
+  <button class="lb-bouton lb-suiv" id="lb-suiv" type="button" aria-label="Photo suivante"><svg class="ico"><use href="#i-d"/></svg></button>
+  <div class="lb-boite">
+    <div class="lb-cadre" id="lb-cadre"><img id="lb-img" src="" alt=""></div>
+    <div class="lb-legende">
+      <b id="lb-nom"></b>
+      <small id="lb-cat"></small>
+      <a class="btn btn--plein btn--petit" id="lb-wa" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Commander</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================
+   ✏️ RÉGLAGES : le SEUL endroit où changer numéro, Instagram,
+   adresse et horaires. Tout le reste du site se met à jour.
+   ========================================================== */
+const REGLAGES = {
+  whatsapp: "2250707123456",                  // numéro WhatsApp : 225 + numéro, sans +, sans espaces
+  telephone: "+2250707123456",                // numéro du bouton « Appeler » (avec +225, sans espaces)
+  telephoneAffiche: "+225 07 07 12 34 56",    // comment le numéro s'écrit à l'écran
+  instagram: "akissi.patisserie",             // identifiant Instagram, sans @
+  adresse: "Cocody Riviera Palmeraie, Abidjan", // à remplacer par l'adresse précise de la boutique
+  messageAccueil: "Bonjour Akissi, je voudrais passer commande.",
+
+  // Horaires. jours : 0 = dimanche, 1 = lundi ... 6 = samedi. Heures au format "HH:MM"
+  horaires: [
+    { jours: [1, 2, 3, 4, 5, 6], libelle: "Lundi – Samedi", ouvre: "07:30", ferme: "19:00" },
+    { jours: [0],                libelle: "Dimanche",        ouvre: "08:00", ferme: "13:00" }
+  ]
+};
+
+/* ===== Outils ===== */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const lienWhatsApp = msg => `https://wa.me/${REGLAGES.whatsapp}?text=${encodeURIComponent(msg)}`;
+const adresseURL = encodeURIComponent(REGLAGES.adresse);
+
+/* ===== Branche les numéros et liens partout ===== */
+$$('[data-wa]').forEach(a => {
+  a.href = lienWhatsApp(a.dataset.wa || REGLAGES.messageAccueil);
+  a.target = "_blank"; a.rel = "noopener";
+});
+$$('[data-tel]').forEach(a => a.href = "tel:" + REGLAGES.telephone);
+$$('[data-tel-texte]').forEach(e => e.textContent = REGLAGES.telephoneAffiche);
+$$('[data-insta]').forEach(a => { a.href = "https://instagram.com/" + REGLAGES.instagram; a.target = "_blank"; a.rel = "noopener"; });
+$$('[data-insta-texte]').forEach(e => e.textContent = "@" + REGLAGES.instagram);
+$$('[data-adresse]').forEach(e => e.textContent = REGLAGES.adresse);
+$$('[data-itineraire]').forEach(a => a.href = "https://www.google.com/maps/search/?api=1&query=" + adresseURL);
+$("#annee").textContent = new Date().getFullYear();
+
+/* ===== Horaires + badge « Ouvert maintenant » =====
+   Abidjan est à l'heure UTC toute l'année (pas d'heure d'été) :
+   on peut donc lire l'heure UTC du visiteur, où qu'il soit. */
+const JOURS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+const heureTexte = h => { const [hh, mm] = h.split(":"); return mm === "00" ? `${+hh}h` : `${+hh}h${mm}`; };
+const enMinutes  = h => { const [hh, mm] = h.split(":").map(Number); return hh * 60 + mm; };
+const maintenant = new Date();
+const jourAuj = maintenant.getUTCDay();
+const minAuj  = maintenant.getUTCHours() * 60 + maintenant.getUTCMinutes();
+const groupeDuJour = j => REGLAGES.horaires.find(g => g.jours.includes(j));
+
+$("#horaires").innerHTML = REGLAGES.horaires.map(g =>
+  `<div class="h-ligne${g.jours.includes(jourAuj) ? " auj" : ""}"><dt>${g.libelle}</dt><dd>${heureTexte(g.ouvre)} – ${heureTexte(g.ferme)}</dd></div>`
+).join("");
+
+function statutBoutique() {
+  const g = groupeDuJour(jourAuj);
+  if (g && minAuj >= enMinutes(g.ouvre) && minAuj < enMinutes(g.ferme))
+    return { ouvert: true, texte: `Ouvert maintenant, ferme à ${heureTexte(g.ferme)}` };
+  if (g && minAuj < enMinutes(g.ouvre))
+    return { ouvert: false, texte: `Fermé, ouvre à ${heureTexte(g.ouvre)}` };
+  for (let i = 1; i <= 7; i++) {
+    const j = (jourAuj + i) % 7, n = groupeDuJour(j);
+    if (n) return { ouvert: false, texte: `Fermé, ouvre ${i === 1 ? "demain" : JOURS[j]} à ${heureTexte(n.ouvre)}` };
+  }
+  return { ouvert: false, texte: "Fermé" };
+}
+const st = statutBoutique();
+$$("[data-statut]").forEach(e => { e.hidden = false; e.classList.toggle("ouvert", st.ouvert); $("[data-statut-texte]", e).textContent = st.texte; });
+
+/* ===== Prix « dès » : lus automatiquement dans la section Prix ===== */
+const formatPrix = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0FCFA";
+$$("[data-des]").forEach(e => {
+  const valeurs = $$(".prix", $("#" + e.dataset.des)).map(p => parseInt(p.textContent.replace(/\D/g, ""), 10)).filter(n => !isNaN(n));
+  e.textContent = valeurs.length ? formatPrix(Math.min(...valeurs)) : "Sur devis";
+});
+
+/* ===== Onglets des prix ===== */
+const onglets = $$('[role="tab"]');
+function choisirOnglet(onglet, donnerFocus) {
+  onglets.forEach(o => {
+    const actif = o === onglet;
+    o.setAttribute("aria-selected", actif);
+    o.tabIndex = actif ? 0 : -1;
+    $("#" + o.getAttribute("aria-controls")).hidden = !actif;
+  });
+  $("#cta-prix").href = lienWhatsApp(onglet.dataset.msg);   // le message WhatsApp suit l'onglet
+  if (donnerFocus) onglet.focus();
+}
+onglets.forEach((o, i) => {
+  o.addEventListener("click", () => choisirOnglet(o));
+  o.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") { e.preventDefault(); choisirOnglet(onglets[(i + 1) % onglets.length], true); }
+    if (e.key === "ArrowLeft")  { e.preventDefault(); choisirOnglet(onglets[(i - 1 + onglets.length) % onglets.length], true); }
+  });
+});
+choisirOnglet(onglets[0]);
+
+/* ===== Menu du téléphone ===== */
+const burger = $("#burger"), menu = $("#menu");
+burger.addEventListener("click", () => {
+  const ouvert = menu.hidden;
+  menu.hidden = !ouvert;
+  burger.setAttribute("aria-expanded", ouvert);
+});
+$$("a", menu).forEach(a => a.addEventListener("click", () => { menu.hidden = true; burger.setAttribute("aria-expanded", false); }));
+
+/* ===== Galerie : filtres ===== */
+const tuiles = $$(".tuile");
+let visibles = tuiles;
+$$(".filtre").forEach(b => b.addEventListener("click", () => {
+  $$(".filtre").forEach(x => x.setAttribute("aria-pressed", x === b));
+  const cat = b.dataset.filtre;
+  tuiles.forEach(t => t.hidden = !(cat === "tout" || t.dataset.cat === cat));
+  visibles = tuiles.filter(t => !t.hidden);
+}));
+
+/* ===== Galerie : photo agrandie ===== */
+const lb = $("#lb"), lbImg = $("#lb-img");
+const NOMS_CAT = { anniversaire: "Anniversaire", mariage: "Mariage", petits: "Petits gâteaux" };
+let indexPhoto = 0, dernierFocus = null;
+
+function afficherPhoto(i) {
+  indexPhoto = (i + visibles.length) % visibles.length;
+  const t = visibles[indexPhoto], img = $("img", t);
+  lbImg.hidden = img.hidden;                      // si la photo manque, on garde le cadre de couleur
+  lbImg.src = img.getAttribute("src");
+  lbImg.alt = img.alt;
+  $("#lb-cadre").style.background = getComputedStyle(t).backgroundColor;
+  $("#lb-nom").textContent = t.dataset.nom;
+  $("#lb-cat").textContent = NOMS_CAT[t.dataset.cat];
+  $("#lb-wa").href = lienWhatsApp(`Bonjour Akissi, je suis intéressé(e) par « ${t.dataset.nom} ». Pouvez-vous me donner les détails et la disponibilité ?`);
+}
+function ouvrirPhoto(t) {
+  dernierFocus = document.activeElement;
+  visibles = tuiles.filter(x => !x.hidden);
+  afficherPhoto(visibles.indexOf(t));
+  lb.classList.add("ouvert");
+  document.documentElement.classList.add("fige");
+  $("#lb-fermer").focus();
+}
+function fermerPhoto() {
+  lb.classList.remove("ouvert");
+  document.documentElement.classList.remove("fige");
+  if (dernierFocus) dernierFocus.focus();
+}
+tuiles.forEach(t => t.addEventListener("click", () => ouvrirPhoto(t)));
+$("#lb-fermer").addEventListener("click", fermerPhoto);
+$("#lb-prec").addEventListener("click", () => afficherPhoto(indexPhoto - 1));
+$("#lb-suiv").addEventListener("click", () => afficherPhoto(indexPhoto + 1));
+lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("lb-boite")) fermerPhoto(); });
+document.addEventListener("keydown", e => {
+  if (!lb.classList.contains("ouvert")) return;
+  if (e.key === "Escape") fermerPhoto();
+  if (e.key === "ArrowLeft") afficherPhoto(indexPhoto - 1);
+  if (e.key === "ArrowRight") afficherPhoto(indexPhoto + 1);
+  if (e.key === "Tab") {                          // garde le clavier à l'intérieur de la fenêtre
+    const bt = $$("button, a[href]", lb).filter(x => x.offsetParent !== null || x === document.activeElement);
+    const premier = bt[0], dernier = bt[bt.length - 1];
+    if (e.shiftKey && document.activeElement === premier) { e.preventDefault(); dernier.focus(); }
+    else if (!e.shiftKey && document.activeElement === dernier) { e.preventDefault(); premier.focus(); }
+  }
+});
+let departX = null;                               // glisser le doigt pour changer de photo
+lb.addEventListener("touchstart", e => { departX = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener("touchend", e => {
+  if (departX === null) return;
+  const dx = e.changedTouches[0].clientX - departX;
+  if (Math.abs(dx) > 50) afficherPhoto(indexPhoto + (dx < 0 ? 1 : -1));
+  departX = null;
+});
+
+/* ===== Carte : chargée seulement au clic ===== */
+$("#carte-btn").addEventListener("click", () => {
+  const f = document.createElement("iframe");
+  f.src = `https://www.google.com/maps?q=${adresseURL}&output=embed`;
+  f.title = "Carte : " + REGLAGES.adresse;
+  f.loading = "lazy";
+  f.referrerPolicy = "no-referrer-when-downgrade";
+  $("#carte").replaceChildren(f);
+});
+</script>
+</body>
+</html>
