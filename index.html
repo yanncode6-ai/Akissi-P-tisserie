@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Akissi Pâtisserie – Gâteaux faits maison à Cocody, Abidjan</title>
-<meta name="description" content="Gâteaux d’anniversaire, pièces de mariage, petits gâteaux et viennoiseries faits maison à Cocody Riviera Palmeraie, Abidjan. Commandez sur WhatsApp.">
+<meta name="description" content="Gâteaux d’anniversaire, pièces de mariage, douceurs et viennoiseries faits maison à Cocody Riviera Palmeraie, Abidjan. Commandez sur WhatsApp.">
 <meta name="theme-color" content="#fbf6ee">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎂%3C/text%3E%3C/svg%3E">
 
@@ -27,6 +27,7 @@
   --peche:#f9dcc0;        /* petites touches de couleur (saveurs) */
   --pistache:#d9e5c5;
   --mangue:#f6e29a;
+  --ble:#f2e0bd;          /* viennoiseries */
   --ombre:rgba(74,42,30,.16) -14px 10px 40px 0;  /* ombre douce des cartes */
 
   --serif:"Playfair Display", Georgia, "Times New Roman", serif;
@@ -92,7 +93,7 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 .menu{border-top:1px solid rgba(74,42,30,.12);background:var(--creme)}
 .menu a{display:block;padding:16px 20px;text-decoration:none;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--brun);border-bottom:1px solid rgba(74,42,30,.08)}
 @media (min-width:900px){
-  .nav{display:flex;gap:32px}
+  .nav{display:flex;gap:26px}
   .nav a{text-decoration:none;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:var(--brun);padding:8px 0;border-bottom:2px solid transparent}
   .nav a:hover{border-bottom-color:var(--dore)}
   .entete-cta{display:inline-flex}
@@ -131,17 +132,14 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 .statut{display:inline-flex;align-items:center;gap:10px;margin-top:20px;padding:8px 16px;border-radius:16px;background:var(--blanc);font-size:.8rem;letter-spacing:.06em}
 .statut i{width:10px;height:10px;border-radius:50%;background:#9b8b84;flex:none}
 .statut.ouvert i{background:#5aa56a}
-.saveurs{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.tag{padding:6px 14px;border-radius:16px;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--brun)}
-.tag--1{background:var(--mangue)}.tag--2{background:var(--rose)}.tag--3{background:var(--pistache)}.tag--4{background:var(--peche)}
 @media (min-width:640px){.actions{flex-direction:row;flex-wrap:wrap}}
 @media (min-width:900px){
   .hero{padding:56px 0 72px}
   .hero-grille{grid-template-columns:1.05fr .95fr;align-items:center;gap:56px}
   .hero-photo{order:0}
-  .blob--mangue{right:-8%}
   .cadre-photo{aspect-ratio:4/5}
 }
+@media (min-width:1100px){.blob--mangue{right:-8%}}
 /* Les 2 taches de l'accueil flottent doucement (transform seulement) */
 @keyframes flotte{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(0,-10px,0) rotate(3deg)}}
 .hero-photo .blob{animation:flotte 10s ease-in-out infinite}
@@ -149,15 +147,16 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 
 /* ===== Les 4 prix de départ (calculés automatiquement) ===== */
 .des{display:grid;grid-template-columns:1fr 1fr;margin-top:44px;background:var(--blanc);border-radius:8px;box-shadow:var(--ombre);overflow:hidden}
-.des div{padding:18px 16px;border-bottom:1px solid rgba(74,42,30,.1)}
-.des div:nth-child(odd){border-right:1px solid rgba(74,42,30,.1)}
-.des div:nth-last-child(-n+2){border-bottom:0}
+.des a{display:block;padding:18px 16px;text-decoration:none;color:inherit;border-bottom:1px solid rgba(74,42,30,.1);transition:background-color .2s}
+.des a:nth-child(odd){border-right:1px solid rgba(74,42,30,.1)}
+.des a:nth-last-child(-n+2){border-bottom:0}
+@media (hover:hover){.des a:hover{background:rgba(244,207,201,.35)}}
 .des span{display:block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
 .des strong{display:block;margin-top:4px;font:600 1.2rem/1.2 var(--serif);color:var(--brun)}
 @media (min-width:760px){
   .des{grid-template-columns:repeat(4,1fr)}
-  .des div{border-bottom:0!important;border-right:1px solid rgba(74,42,30,.1)}
-  .des div:last-child{border-right:0}
+  .des a{border-bottom:0!important;border-right:1px solid rgba(74,42,30,.1)}
+  .des a:last-child{border-right:0}
 }
 
 /* ===== Sections ===== */
@@ -167,9 +166,9 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 
 /* ===== Galerie ===== */
 .filtres{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 22px}
-.filtre{min-height:44px;padding:0 18px;border-radius:32px;border:1.5px solid rgba(74,42,30,.3);background:transparent;color:var(--brun);font:500 .74rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,color .2s}
-.filtre[aria-pressed="true"]{background:var(--brun);border-color:var(--brun);color:#fff}
-.grille{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.filtre,.bascule-btn{min-height:44px;padding:0 18px;border-radius:32px;border:1.5px solid rgba(74,42,30,.3);background:transparent;color:var(--brun);font:500 .74rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .2s,color .2s}
+.filtre[aria-pressed="true"],.bascule-btn[aria-pressed="true"]{background:var(--brun);border-color:var(--brun);color:#fff}
+.grille{grid-auto-flow:dense;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media (min-width:640px){.grille{grid-template-columns:repeat(3,1fr);gap:16px}}
 @media (min-width:1000px){.grille{grid-template-columns:repeat(4,1fr)}}
 .tuile{
@@ -179,11 +178,22 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 }
 .tuile[data-cat="mariage"]{--c:var(--rose)}
 .tuile[data-cat="petits"]{--c:var(--pistache)}
+.tuile[data-cat="vienn"]{--c:var(--ble)}
 .tuile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .legende{position:absolute;left:0;right:0;bottom:0;padding:36px 12px 12px;background:linear-gradient(to top,rgba(40,22,14,.78),rgba(40,22,14,0))}
 .legende b{display:block;font:600 .98rem/1.2 var(--serif)}
 .legende small{display:block;margin-top:3px;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
 @media (hover:hover){.tuile:hover img{transform:scale(1.05)}}
+@media (min-width:640px){
+  .tuile--grand{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
+  .tuile--grand .legende b{font-size:1.3rem}
+}
+.voir-plus{display:none;margin-top:20px}
+@media (max-width:639px){
+  .grille[data-mode="tout"]:not(.deplie) .tuile.suite{display:none}
+  .grille[data-mode="tout"]:not(.deplie) + .voir-plus{display:block}
+  .voir-plus .btn{width:100%}
+}
 @keyframes apparait{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
 
 /* Photo agrandie */
@@ -217,19 +227,6 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 .note-prix{max-width:620px;margin-top:18px;font-size:.95rem}
 .bloc--rose .btn{margin-top:22px}
 
-/* ===== Comment commander ===== */
-.etapes{display:grid;gap:16px;margin-top:32px}
-.etape{display:flex;gap:16px;align-items:flex-start;background:var(--blanc);border-radius:8px;box-shadow:var(--ombre);padding:20px 18px}
-.etape .num{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--dore);display:grid;place-items:center;font:600 1.2rem/1 var(--serif);color:var(--brun)}
-.etape h3{font-size:1.2rem;line-height:1.25}
-.etape p{margin-top:4px;font-size:.96rem}
-.delais{margin-top:22px;max-width:40rem;font-size:.98rem}
-.bloc--commander .branche{display:none}
-@media (min-width:900px){
-  .etapes{grid-template-columns:repeat(3,1fr);gap:20px}
-  .etape{flex-direction:column;padding:26px 22px}
-  .bloc--commander .branche{display:block;right:60px;top:36px;transform:rotate(14deg);opacity:.6}
-}
 
 /* ===== Avis ===== */
 .avis-rang{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:30px -20px 0;padding:14px 20px 30px;-webkit-overflow-scrolling:touch}
@@ -240,10 +237,58 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 .avis cite{font-style:normal;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--brun)}
 .astuce{margin-top:-8px;font-size:.85rem}
 @media (min-width:900px){
-  .avis-rang{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible;margin:34px 0 0;padding:6px 0}
-  .avis{flex:none;max-width:none}
+  /* 5 avis : 3 en haut, 2 centrés en dessous */
+  .avis-rang{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;overflow:visible;margin:34px 0 0;padding:6px 0}
+  .avis{flex:0 1 calc((100% - 32px) / 3);max-width:none}
   .astuce{display:none}
 }
+
+/* ===== Bannière promo ===== */
+.bandeau-saveur{padding:8px 0 0}
+.saveur{display:flex;flex-direction:column;align-items:flex-start;gap:16px;background:var(--mangue);border-radius:8px;padding:22px 20px;box-shadow:var(--ombre)}
+.saveur--rose{background:var(--rose)}.saveur--pistache{background:var(--pistache)}
+.saveur p{margin:0}
+.saveur-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--brun)}
+.saveur-titre{margin-top:4px!important;font:600 clamp(1.5rem,6vw,2rem)/1.15 var(--serif);color:var(--brun)}
+.saveur-fin{margin-top:2px!important;font-size:.95rem}
+@media (min-width:640px){.saveur{flex-direction:row;align-items:center;justify-content:space-between;padding:24px 32px}}
+
+/* ===== Outil « Quelle taille choisir ? » ===== */
+.outil{max-width:620px;margin-top:28px;background:var(--blanc);border-radius:8px;box-shadow:var(--ombre);padding:22px 20px}
+.outil h3{font-size:1.35rem;line-height:1.2}
+.outil-champs{display:grid;gap:16px;margin-top:16px}
+.champ label,.champ>span{display:block;margin-bottom:8px;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--brun)}
+.champ input{width:100%;max-width:220px;min-height:48px;padding:0 16px;border:1.5px solid rgba(74,42,30,.35);border-radius:8px;background:var(--creme);color:var(--texte);font:400 1rem var(--sans)}
+.outil-choix{display:flex;flex-wrap:wrap;gap:8px}
+.outil-resultat{margin:18px 0 0;font-size:1.05rem;line-height:1.5}
+.outil-resultat strong{font-family:var(--serif);font-weight:600;color:var(--brun)}
+.outil .btn{margin-top:14px}
+@media (min-width:640px){.outil-champs{grid-template-columns:auto 1fr;gap:28px;align-items:end}}
+
+/* ===== Comment commander (une ligne) ===== */
+.bloc--commander{padding:56px 0 32px}
+.parcours{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:12px}
+.parcours li{display:flex;align-items:center;gap:12px;font-size:1.02rem}
+.parcours .num{flex:none;width:32px;height:32px;border-radius:50%;border:2px solid var(--dore);display:grid;place-items:center;font:600 .95rem/1 var(--serif);color:var(--brun)}
+.delais{margin-top:16px;max-width:40rem;font-size:.98rem}
+@media (min-width:760px){
+  .parcours{flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px 14px}
+  .parcours li+li::before{content:"→";margin-right:2px;color:var(--dore);font-size:1.2rem}
+}
+
+/* ===== Questions fréquentes ===== */
+.faq{max-width:720px;margin-top:24px;display:grid;gap:10px}
+.faq details{background:var(--blanc);border-radius:8px;box-shadow:0 4px 14px rgba(74,42,30,.08)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:12px 18px;cursor:pointer;list-style:none;font:600 1.05rem/1.3 var(--serif);color:var(--brun)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:400 1.6rem/1 var(--sans);color:var(--dore);transition:transform .2s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 18px 18px;font-size:.98rem}
+
+/* ===== Petits textes ===== */
+.lien-mariage{margin-top:16px;font-size:.95rem}
+.lien-mariage a{color:var(--brun);font-weight:500;text-underline-offset:4px}
+.note-ferme{max-width:460px;margin-top:14px;padding:12px 16px;border-left:3px solid var(--dore);background:rgba(194,154,59,.1);font-size:.95rem}
 
 /* ===== Contact + carte ===== */
 .contact-grille{display:grid;gap:32px;margin-top:30px}
@@ -252,6 +297,7 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 .h-ligne:last-child{border-bottom:0}
 .h-ligne dt{font-weight:500}
 .h-ligne.auj dt::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dore);margin-right:8px}
+.lien-insta{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:500;color:var(--brun)}
 .adresse{display:flex;gap:10px;align-items:flex-start;margin:20px 0 4px;font-size:1.02rem}
 .adresse .ico{margin-top:3px;color:var(--brun)}
 .liens-contact{display:flex;flex-direction:column;gap:12px;margin-top:22px;max-width:460px}
@@ -323,20 +369,22 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
   <div class="cadre">
     <a class="logo" href="#accueil" aria-label="Akissi Pâtisserie, retour à l’accueil"><b>Akissi</b><small>Pâtisserie</small></a>
     <nav class="nav" aria-label="Navigation principale">
+      <a href="#avis">Avis</a>
       <a href="#creations">Créations</a>
       <a href="#prix">Prix</a>
       <a href="#commander">Commander</a>
-      <a href="#avis">Avis</a>
+      <a href="#faq">Questions</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn btn--plein btn--petit entete-cta" data-wa="">Commander</a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><svg class="ico"><use href="#i-menu"/></svg></button>
   </div>
   <nav class="menu" id="menu" aria-label="Menu mobile" hidden>
+    <a href="#avis">Avis</a>
     <a href="#creations">Créations</a>
     <a href="#prix">Prix</a>
     <a href="#commander">Commander</a>
-    <a href="#avis">Avis</a>
+    <a href="#faq">Questions</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
@@ -351,18 +399,13 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
         <h1><span>Des gâteaux</span><span>faits maison</span></h1>
         <p class="script">avec le goût d’ici</p>
         <!-- ✏️ TEXTE D'ACCUEIL -->
-        <p class="texte">Gâteaux d’anniversaire, pièces de mariage, petits gâteaux et viennoiseries, préparés à la commande dans notre atelier de Cocody Riviera Palmeraie.</p>
+        <p class="texte">Gâteaux d’anniversaire, pièces de mariage, douceurs et viennoiseries, préparés à la commande dans notre atelier de Cocody Riviera Palmeraie.</p>
         <div class="actions">
           <a class="btn btn--plein" data-wa=""><svg class="ico"><use href="#i-wa"/></svg>Commander sur WhatsApp</a>
           <a class="btn btn--contour" href="#creations">Voir nos créations</a>
         </div>
+        <p class="lien-mariage"><a data-wa="Bonjour Akissi, je prépare un mariage et je voudrais un devis pour un gâteau.">Un mariage en vue ? Demandez un devis</a></p>
         <p class="statut" data-statut hidden><i></i><span data-statut-texte></span></p>
-        <ul class="saveurs" aria-label="Nos saveurs signature">
-          <li class="tag tag--1">Coco-ananas</li>
-          <li class="tag tag--2">Banane-chocolat</li>
-          <li class="tag tag--3">Gingembre-citron</li>
-          <li class="tag tag--4">Mangue-passion</li>
-        </ul>
       </div>
 
       <figure class="hero-photo">
@@ -377,162 +420,16 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
 
     <!-- Prix de départ : calculés automatiquement à partir de la section Prix -->
     <div class="des" aria-label="Prix à partir de">
-      <div><span>Viennoiseries dès</span><strong data-des="p-vienn"></strong></div>
-      <div><span>Petits gâteaux dès</span><strong data-des="p-petits"></strong></div>
-      <div><span>Anniversaire dès</span><strong data-des="p-anniv"></strong></div>
-      <div><span>Mariage dès</span><strong data-des="p-mariage"></strong></div>
+      <a href="#prix" data-onglet="o-vienn"><span>Viennoiseries dès</span><strong data-des="p-vienn"></strong></a>
+      <a href="#prix" data-onglet="o-petits"><span>Douceurs dès</span><strong data-des="p-petits"></strong></a>
+      <a href="#prix" data-onglet="o-anniv"><span>Anniversaire dès</span><strong data-des="p-anniv"></strong></a>
+      <a href="#prix" data-onglet="o-mariage"><span>Mariage dès</span><strong data-des="p-mariage"></strong></a>
     </div>
   </div>
 </section>
 
-<!-- ================= CRÉATIONS (galerie + filtres) ================= -->
-<section class="bloc bloc--creme" id="creations">
-  <div class="cadre">
-    <div class="intro">
-      <h2><span class="u">Un gâteau</span> <span class="u">pour chaque</span> <span class="u">occasion</span></h2>
-      <p class="script">touchez une photo pour l’agrandir</p>
-    </div>
-
-    <div class="filtres" role="group" aria-label="Filtrer les créations">
-      <button class="filtre" type="button" data-filtre="tout" aria-pressed="true">Tout</button>
-      <button class="filtre" type="button" data-filtre="anniversaire" aria-pressed="false">Anniversaire</button>
-      <button class="filtre" type="button" data-filtre="mariage" aria-pressed="false">Mariage</button>
-      <button class="filtre" type="button" data-filtre="petits" aria-pressed="false">Petits gâteaux</button>
-    </div>
-
-    <!-- ✏️ GALERIE : une tuile = une photo. data-cat = anniversaire | mariage | petits
-         Le nom du fichier (src) doit être identique à celui du dépôt GitHub. -->
-    <div class="grille" id="grille">
-      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Coco-ananas" aria-label="Agrandir : gâteau coco-ananas">
-        <img src="anniv-coco-ananas.jpg" alt="Gâteau d’anniversaire coco-ananas" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Coco-ananas</b><small>Anniversaire</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Banane-chocolat" aria-label="Agrandir : gâteau banane-chocolat">
-        <img src="anniv-banane-chocolat.jpg" alt="Gâteau d’anniversaire banane-chocolat" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Banane-chocolat</b><small>Anniversaire</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Gingembre-citron" aria-label="Agrandir : gâteau gingembre-citron">
-        <img src="anniv-gingembre-citron.jpg" alt="Gâteau d’anniversaire gingembre-citron" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Gingembre-citron</b><small>Anniversaire</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Mangue-passion" aria-label="Agrandir : gâteau mangue-passion">
-        <img src="anniv-mangue-passion.jpg" alt="Gâteau d’anniversaire mangue-passion" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Mangue-passion</b><small>Anniversaire</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Gâteau rose poudré" aria-label="Agrandir : gâteau rose poudré">
-        <img src="anniv-rose.jpg" alt="Gâteau d’anniversaire rose poudré à la chantilly" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Gâteau rose poudré</b><small>Anniversaire</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="mariage" data-nom="Mariage, 2 étages" aria-label="Agrandir : gâteau de mariage 2 étages">
-        <img src="mariage-2-etages.jpg" alt="Gâteau de mariage à 2 étages" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Mariage, 2 étages</b><small>Mariage</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="mariage" data-nom="Mariage, 3 étages" aria-label="Agrandir : gâteau de mariage 3 étages">
-        <img src="mariage-3-etages.jpg" alt="Gâteau de mariage à 3 étages" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Mariage, 3 étages</b><small>Mariage</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="mariage" data-nom="Mariage, fleurs fraîches" aria-label="Agrandir : gâteau de mariage aux fleurs fraîches">
-        <img src="mariage-fleurs.jpg" alt="Gâteau de mariage décoré de fleurs fraîches" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Mariage, fleurs fraîches</b><small>Mariage</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="petits" data-nom="Cupcakes" aria-label="Agrandir : cupcakes">
-        <img src="petits-cupcakes.jpg" alt="Cupcakes glacés sur un présentoir" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Cupcakes</b><small>Petits gâteaux</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="petits" data-nom="Mini-tartes" aria-label="Agrandir : mini-tartes">
-        <img src="petits-mini-tartes.jpg" alt="Mini-tartes aux fruits" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Mini-tartes</b><small>Petits gâteaux</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="petits" data-nom="Plateau événement" aria-label="Agrandir : plateau événement">
-        <img src="petits-plateau.jpg" alt="Plateau de petits gâteaux assortis pour un événement" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Plateau événement</b><small>Petits gâteaux</small></span>
-      </button>
-      <button class="tuile" type="button" data-cat="petits" data-nom="Boîte cadeau" aria-label="Agrandir : boîte cadeau">
-        <img src="petits-boite.jpg" alt="Boîte cadeau de 6 cupcakes avec un ruban" loading="lazy" decoding="async" onerror="this.hidden=true">
-        <span class="legende"><b>Boîte cadeau</b><small>Petits gâteaux</small></span>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PRIX (onglets) ================= -->
-<section class="bloc bloc--rose" id="prix">
-  <svg class="vague" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="color:var(--rose)"><path fill="currentColor" d="M0 60C240 120 480 0 720 50C960 100 1200 10 1440 60L1440 120L0 120Z"/></svg>
-  <div class="cadre">
-    <div class="intro">
-      <h2><span class="u">Des prix</span> <span class="u">clairs</span></h2>
-      <p class="script">pas de mauvaise surprise</p>
-    </div>
-
-    <!-- ✏️ PRIX : modifier uniquement le chiffre dans chaque <span class="prix">.
-         Les prix « dès » de l'accueil se mettent à jour tout seuls. -->
-    <div class="onglets" role="tablist" aria-label="Catégories de prix">
-      <button class="onglet" role="tab" type="button" id="o-anniv" aria-controls="p-anniv" aria-selected="true" data-msg="Bonjour Akissi, je voudrais commander un gâteau d’anniversaire.">Anniversaire</button>
-      <button class="onglet" role="tab" type="button" id="o-mariage" aria-controls="p-mariage" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je prépare un mariage et je voudrais un devis pour un gâteau.">Mariage</button>
-      <button class="onglet" role="tab" type="button" id="o-petits" aria-controls="p-petits" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je voudrais commander des petits gâteaux.">Petits gâteaux</button>
-      <button class="onglet" role="tab" type="button" id="o-vienn" aria-controls="p-vienn" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je voudrais commander des viennoiseries.">Viennoiseries</button>
-    </div>
-
-    <div class="panneau" role="tabpanel" id="p-anniv" aria-labelledby="o-anniv">
-      <div class="ligne"><span class="nom">Petit<small>6 à 8 parts</small></span><span class="points"></span><span class="prix">18&nbsp;000 FCFA</span></div>
-      <div class="ligne"><span class="nom">Moyen<small>12 à 15 parts</small></span><span class="points"></span><span class="prix">30&nbsp;000 FCFA</span></div>
-      <div class="ligne"><span class="nom">Grand<small>20 à 25 parts</small></span><span class="points"></span><span class="prix">45&nbsp;000 FCFA</span></div>
-    </div>
-
-    <div class="panneau" role="tabpanel" id="p-mariage" aria-labelledby="o-mariage">
-      <div class="ligne"><span class="nom">2 étages<small>30 parts</small></span><span class="points"></span><span class="prix">75&nbsp;000 FCFA</span></div>
-      <div class="ligne"><span class="nom">3 étages<small>60 parts</small></span><span class="points"></span><span class="prix">140&nbsp;000 FCFA</span></div>
-      <div class="ligne"><span class="nom">Sur mesure<small>Dites-nous votre idée</small></span><span class="points"></span><span class="prix">Sur devis</span></div>
-    </div>
-
-    <div class="panneau" role="tabpanel" id="p-petits" aria-labelledby="o-petits">
-      <div class="ligne"><span class="nom">Cupcakes<small>Boîte de 6</small></span><span class="points"></span><span class="prix">6&nbsp;000 FCFA</span></div>
-      <div class="ligne"><span class="nom">Mini-tartes<small>Boîte de 6</small></span><span class="points"></span><span class="prix">7&nbsp;500 FCFA</span></div>
-      <div class="ligne"><span class="nom">Plateau événement<small>30 pièces</small></span><span class="points"></span><span class="prix">32&nbsp;000 FCFA</span></div>
-    </div>
-
-    <div class="panneau" role="tabpanel" id="p-vienn" aria-labelledby="o-vienn">
-      <div class="ligne"><span class="nom">Croissant</span><span class="points"></span><span class="prix">500 FCFA</span></div>
-      <div class="ligne"><span class="nom">Pain au chocolat</span><span class="points"></span><span class="prix">600 FCFA</span></div>
-      <div class="ligne"><span class="nom">Pain au coco</span><span class="points"></span><span class="prix">400 FCFA</span></div>
-    </div>
-
-    <!-- ✏️ LIVRAISON (écrit une seule fois, ici) -->
-    <p class="note-prix">Livraison à Abidjan : 2&nbsp;000 FCFA dans Cocody, 3&nbsp;500 FCFA ailleurs, offerte à partir de 50&nbsp;000 FCFA d’achat.</p>
-
-    <a class="btn btn--plein" id="cta-prix" data-wa=""><svg class="ico"><use href="#i-wa"/></svg>Commander sur WhatsApp</a>
-  </div>
-</section>
-
-<!-- ================= COMMENT COMMANDER ================= -->
-<section class="bloc bloc--creme bloc--commander" id="commander">
-  <svg class="vague" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="color:var(--creme)"><path fill="currentColor" d="M0 70C220 10 460 110 720 60C980 10 1200 100 1440 50L1440 120L0 120Z"/></svg>
-  <svg class="branche" aria-hidden="true"><use href="#branche"/></svg>
-  <div class="cadre">
-    <div class="intro">
-      <h2><span class="u">Commander,</span> <span class="u">c’est simple</span></h2>
-    </div>
-    <div class="etapes">
-      <div class="etape">
-        <span class="num" aria-hidden="true">1</span>
-        <div><h3>Écrivez-nous</h3><p>Envoyez un message WhatsApp avec la saveur, la taille et la date souhaitées.</p></div>
-      </div>
-      <div class="etape">
-        <span class="num" aria-hidden="true">2</span>
-        <div><h3>On confirme</h3><p>Nous vous répondons avec le prix et le créneau de préparation.</p></div>
-      </div>
-      <div class="etape">
-        <span class="num" aria-hidden="true">3</span>
-        <div><h3>Retrait ou livraison</h3><p>Passez le récupérer à la boutique, ou nous le livrons à Abidjan.</p></div>
-      </div>
-    </div>
-    <!-- ✏️ DÉLAIS (écrits une seule fois, ici) -->
-    <p class="delais"><strong>Délais :</strong> 48 heures à l’avance pour les gâteaux, 7 jours pour les mariages.</p>
-  </div>
-</section>
-
-<!-- ================= AVIS ================= -->
-<section class="bloc bloc--creme" id="avis" style="padding-top:8px">
+<!-- ================= AVIS (juste après l'accueil, avant la galerie) ================= -->
+<section class="bloc bloc--creme" id="avis" style="padding:16px 0 40px">
   <div class="cadre">
     <div class="intro">
       <h2><span class="u">Ils ont goûté,</span> <span class="u">ils en parlent</span></h2>
@@ -555,12 +452,229 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
         <figcaption><cite>Nadège, Plateau</cite></figcaption>
       </figure>
       <figure class="avis">
-        <p class="etoiles" role="img" aria-label="4 étoiles sur 5">★★★★<span class="vide">★</span></p>
-        <blockquote>« Un peu d’attente le samedi matin, mais ça vaut le coup. »</blockquote>
-        <figcaption><cite>Kouadio, Riviera</cite></figcaption>
+        <p class="etoiles" role="img" aria-label="5 étoiles sur 5">★★★★★</p>
+        <blockquote>« Les cupcakes étaient parfaits pour l’anniversaire de ma fille. »</blockquote>
+        <figcaption><cite>Fatou, Marcory</cite></figcaption>
+      </figure>
+      <figure class="avis">
+        <p class="etoiles" role="img" aria-label="5 étoiles sur 5">★★★★★</p>
+        <blockquote>« Commande passée le matin, livrée l’après-midi, rien à dire. »</blockquote>
+        <figcaption><cite>Jean-Marc, Bingerville</cite></figcaption>
       </figure>
     </div>
     <p class="astuce">Faites glisser pour lire les autres avis.</p>
+  </div>
+</section>
+
+<!-- ================= BANNIÈRE PROMO (juste avant la galerie) =================
+     Les promos se règlent dans le bloc RÉGLAGES (en bas du fichier). Cachée par défaut, affichée par le JS quand une promo est en cours. -->
+<section class="bandeau-saveur" id="saveur-mois" aria-label="Promotion" hidden>
+  <div class="cadre">
+    <div class="saveur">
+      <div>
+        <p class="saveur-label" data-promo-etiquette></p>
+        <p class="saveur-titre" data-promo-titre></p>
+        <p class="saveur-fin" data-promo-detail></p>
+      </div>
+      <a class="btn btn--plein btn--petit" data-promo-wa>Commander</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CRÉATIONS (galerie + filtres) ================= -->
+<section class="bloc bloc--creme" id="creations" style="padding-top:40px">
+  <div class="cadre">
+    <div class="intro">
+      <h2><span class="u">Un gâteau</span> <span class="u">pour chaque</span> <span class="u">occasion</span></h2>
+      <p class="script">touchez une photo pour l’agrandir</p>
+    </div>
+
+    <div class="filtres" role="group" aria-label="Filtrer les créations">
+      <button class="filtre" type="button" data-filtre="tout" aria-pressed="true">Tout</button>
+      <button class="filtre" type="button" data-filtre="anniversaire" aria-pressed="false">Anniversaire</button>
+      <button class="filtre" type="button" data-filtre="mariage" aria-pressed="false">Mariage</button>
+      <button class="filtre" type="button" data-filtre="petits" aria-pressed="false">Douceurs</button>
+      <button class="filtre" type="button" data-filtre="vienn" aria-pressed="false">Viennoiseries</button>
+    </div>
+
+    <!-- ✏️ GALERIE : une tuile = une photo. data-cat = anniversaire | mariage | petits (= Douceurs) | vienn (= Viennoiseries)
+         Le nom du fichier (src) doit être identique à celui du dépôt GitHub.
+         La 1re tuile (class "tuile--grand") s'affiche en grand sur tablette et ordinateur. -->
+    <div class="grille" id="grille" data-mode="tout">
+      <button class="tuile tuile--grand" type="button" data-cat="mariage" data-nom="Mariage, 3 étages" aria-label="Agrandir : Mariage, 3 étages">
+        <img src="mariage-3-etages.jpg" alt="Gâteau de mariage à 3 étages" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mariage, 3 étages</b><small>Mariage</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Coco-ananas" aria-label="Agrandir : Coco-ananas">
+        <img src="anniv-coco-ananas.jpg" alt="Gâteau d’anniversaire coco-ananas" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Coco-ananas</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Banane-chocolat" aria-label="Agrandir : Banane-chocolat">
+        <img src="anniv-banane-chocolat.jpg" alt="Gâteau d’anniversaire banane-chocolat" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Banane-chocolat</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Gingembre-citron" aria-label="Agrandir : Gingembre-citron">
+        <img src="anniv-gingembre-citron.jpg" alt="Gâteau d’anniversaire gingembre-citron" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Gingembre-citron</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Mangue-passion" aria-label="Agrandir : Mangue-passion">
+        <img src="anniv-mangue-passion.jpg" alt="Gâteau d’anniversaire mangue-passion" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mangue-passion</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="anniversaire" data-nom="Gâteau rose poudré" aria-label="Agrandir : Gâteau rose poudré">
+        <img src="anniv-rose.jpg" alt="Gâteau d’anniversaire rose poudré à la chantilly" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Gâteau rose poudré</b><small>Anniversaire</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="mariage" data-nom="Mariage, 2 étages" aria-label="Agrandir : Mariage, 2 étages">
+        <img src="mariage-2-etages.jpg" alt="Gâteau de mariage à 2 étages" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mariage, 2 étages</b><small>Mariage</small></span>
+      </button>
+      <button class="tuile" type="button" data-cat="mariage" data-nom="Mariage, fleurs fraîches" aria-label="Agrandir : Mariage, fleurs fraîches">
+        <img src="mariage-fleurs.jpg" alt="Gâteau de mariage décoré de fleurs fraîches" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mariage, fleurs fraîches</b><small>Mariage</small></span>
+      </button>
+      <button class="tuile suite" type="button" data-cat="petits" data-nom="Cupcakes" aria-label="Agrandir : Cupcakes">
+        <img src="petits-cupcakes.jpg" alt="Cupcakes glacés sur un présentoir" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Cupcakes</b><small>Douceurs</small></span>
+      </button>
+      <button class="tuile suite" type="button" data-cat="petits" data-nom="Mini-tartes" aria-label="Agrandir : Mini-tartes">
+        <img src="petits-mini-tartes.jpg" alt="Mini-tartes aux fruits" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Mini-tartes</b><small>Douceurs</small></span>
+      </button>
+      <button class="tuile suite" type="button" data-cat="petits" data-nom="Plateau événement" aria-label="Agrandir : Plateau événement">
+        <img src="petits-plateau.jpg" alt="Plateau de douceurs assorties pour un événement" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Plateau événement</b><small>Douceurs</small></span>
+      </button>
+      <button class="tuile suite" type="button" data-cat="petits" data-nom="Boîte cadeau" aria-label="Agrandir : Boîte cadeau">
+        <img src="petits-boite.jpg" alt="Boîte cadeau de 6 cupcakes avec un ruban" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Boîte cadeau</b><small>Douceurs</small></span>
+      </button>
+      <button class="tuile suite" type="button" data-cat="vienn" data-nom="Croissants" aria-label="Agrandir : Croissants">
+        <img src="vienn-croissants.jpg" alt="Croissants dorés" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Croissants</b><small>Viennoiseries</small></span>
+      </button>
+      <button class="tuile suite" type="button" data-cat="vienn" data-nom="Pains au coco" aria-label="Agrandir : Pains au coco">
+        <img src="vienn-pains-coco.jpg" alt="Pains au coco" loading="lazy" decoding="async" onerror="this.hidden=true">
+        <span class="legende"><b>Pains au coco</b><small>Viennoiseries</small></span>
+      </button>
+    </div>
+    <!-- Sur téléphone, « Tout » n'affiche que les 8 premières photos : ce bouton montre les autres (page moins longue) -->
+    <p class="voir-plus"><button class="btn btn--contour" id="voir-plus" type="button">Voir toutes les créations</button></p>
+  </div>
+</section>
+
+<!-- ================= PRIX (onglets) ================= -->
+<section class="bloc bloc--rose" id="prix">
+  <svg class="vague" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="color:var(--rose)"><path fill="currentColor" d="M0 60C240 120 480 0 720 50C960 100 1200 10 1440 60L1440 120L0 120Z"/></svg>
+  <div class="cadre">
+    <div class="intro">
+      <h2><span class="u">Des prix</span> <span class="u">clairs</span></h2>
+      <p class="script">pas de mauvaise surprise</p>
+    </div>
+
+    <!-- ✏️ PRIX : modifier uniquement le chiffre dans chaque <span class="prix">.
+         Les prix « dès » de l'accueil se mettent à jour tout seuls. -->
+    <div class="onglets" role="tablist" aria-label="Catégories de prix">
+      <button class="onglet" role="tab" type="button" id="o-anniv" aria-controls="p-anniv" aria-selected="true" data-msg="Bonjour Akissi, je voudrais commander un gâteau d’anniversaire.">Anniversaire</button>
+      <button class="onglet" role="tab" type="button" id="o-mariage" aria-controls="p-mariage" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je prépare un mariage et je voudrais un devis pour un gâteau.">Mariage</button>
+      <button class="onglet" role="tab" type="button" id="o-petits" aria-controls="p-petits" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je voudrais commander des douceurs.">Douceurs</button>
+      <button class="onglet" role="tab" type="button" id="o-vienn" aria-controls="p-vienn" aria-selected="false" tabindex="-1" data-msg="Bonjour Akissi, je voudrais commander des viennoiseries.">Viennoiseries</button>
+    </div>
+
+    <div class="panneau" role="tabpanel" id="p-anniv" aria-labelledby="o-anniv">
+      <div class="ligne"><span class="nom">Petit<small>6 à 8 parts</small></span><span class="points"></span><span class="prix">18&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Moyen<small>12 à 15 parts</small></span><span class="points"></span><span class="prix">30&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Grand<small>20 à 25 parts</small></span><span class="points"></span><span class="prix">45&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Extra-grand<small>35 à 40 parts</small></span><span class="points"></span><span class="prix">65&nbsp;000 FCFA</span></div>
+    </div>
+
+    <div class="panneau" role="tabpanel" id="p-mariage" aria-labelledby="o-mariage">
+      <div class="ligne"><span class="nom">2 étages<small>30 parts</small></span><span class="points"></span><span class="prix">75&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">3 étages<small>60 parts</small></span><span class="points"></span><span class="prix">150&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Sur mesure<small>Dites-nous votre idée</small></span><span class="points"></span><span class="prix">Sur devis</span></div>
+    </div>
+
+    <div class="panneau" role="tabpanel" id="p-petits" aria-labelledby="o-petits">
+      <div class="ligne"><span class="nom">Cupcakes<small>Boîte de 6</small></span><span class="points"></span><span class="prix">6&nbsp;000 FCFA</span></div>
+      <div class="ligne"><span class="nom">Mini-tartes<small>Boîte de 6</small></span><span class="points"></span><span class="prix">7&nbsp;500 FCFA</span></div>
+      <div class="ligne"><span class="nom">Plateau événement<small>30 pièces</small></span><span class="points"></span><span class="prix">32&nbsp;000 FCFA</span></div>
+    </div>
+
+    <div class="panneau" role="tabpanel" id="p-vienn" aria-labelledby="o-vienn">
+      <div class="ligne"><span class="nom">Croissant</span><span class="points"></span><span class="prix">500 FCFA</span></div>
+      <div class="ligne"><span class="nom">Pain au chocolat</span><span class="points"></span><span class="prix">600 FCFA</span></div>
+      <div class="ligne"><span class="nom">Pain au coco</span><span class="points"></span><span class="prix">400 FCFA</span></div>
+    </div>
+
+    <!-- ✏️ LIVRAISON (écrit une seule fois, ici) -->
+    <p class="note-prix">Livraison à Abidjan : 2&nbsp;000 FCFA dans Cocody, 3&nbsp;500 FCFA ailleurs, offerte à partir de 65&nbsp;000 FCFA d’achat.</p>
+
+    <!-- OUTIL « QUELLE TAILLE CHOISIR ? » : lit les tailles et les prix dans les onglets Anniversaire et Mariage ci-dessus -->
+    <div class="outil" id="outil-taille">
+      <h3>Quelle taille choisir ?</h3>
+      <div class="outil-champs">
+        <div class="champ">
+          <label for="nb-invites">Nombre d’invités</label>
+          <input id="nb-invites" type="number" inputmode="numeric" min="1" max="500" placeholder="ex. 18" autocomplete="off">
+        </div>
+        <div class="champ">
+          <span id="lbl-type">C’est pour un…</span>
+          <div class="outil-choix" role="group" aria-labelledby="lbl-type">
+            <button class="bascule-btn" type="button" data-type="p-anniv" aria-pressed="true">Anniversaire</button>
+            <button class="bascule-btn" type="button" data-type="p-mariage" aria-pressed="false">Mariage</button>
+          </div>
+        </div>
+      </div>
+      <p class="outil-resultat" id="outil-resultat" aria-live="polite">Tapez le nombre d’invités, on vous dit quelle taille prendre.</p>
+      <a class="btn btn--contour btn--petit" id="outil-wa" target="_blank" rel="noopener" hidden>Commander</a>
+    </div>
+
+    <a class="btn btn--plein" id="cta-prix" data-wa=""><svg class="ico"><use href="#i-wa"/></svg>Commander sur WhatsApp</a>
+  </div>
+</section>
+
+<!-- ================= COMMENT COMMANDER (une seule ligne) ================= -->
+<section class="bloc bloc--creme bloc--commander" id="commander">
+  <svg class="vague" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" style="color:var(--creme)"><path fill="currentColor" d="M0 70C220 10 460 110 720 60C980 10 1200 100 1440 50L1440 120L0 120Z"/></svg>
+  <div class="cadre">
+    <h2><span class="u">Commander,</span> <span class="u">c’est simple</span></h2>
+    <ol class="parcours">
+      <li><span class="num" aria-hidden="true">1</span>Écrivez-nous sur WhatsApp</li>
+      <li><span class="num" aria-hidden="true">2</span>On confirme le prix et l’acompte</li>
+      <li><span class="num" aria-hidden="true">3</span>Retrait ou livraison à Abidjan</li>
+    </ol>
+    <!-- Les délais viennent du bloc RÉGLAGES (en bas du fichier) -->
+    <p class="delais"><strong>Délais :</strong> <span data-delai="gateaux"></span> à l’avance pour les gâteaux, <span data-delai="mariages"></span> pour les mariages.</p>
+  </div>
+</section>
+
+<!-- ================= QUESTIONS FRÉQUENTES ================= -->
+<section class="bloc bloc--creme" id="faq" style="padding:24px 0 56px">
+  <div class="cadre">
+    <h2><span class="u">Questions</span> <span class="u">fréquentes</span></h2>
+    <!-- ✏️ FAQ : un bloc <details> = une question. Ajoute ou retire un bloc entier pour modifier la liste. -->
+    <div class="faq">
+      <details>
+        <summary>Faut-il un acompte ?</summary>
+        <p>Oui, 50&nbsp;% à la commande par Wave ou Orange Money, le reste à la livraison ou au retrait.</p>
+      </details>
+      <details>
+        <summary>Combien de temps se conserve un gâteau ?</summary>
+        <p>2 à 3 jours au réfrigérateur. Sortez-le 30 minutes avant de le servir.</p>
+      </details>
+      <details>
+        <summary>Écrivez-vous un message sur le gâteau ?</summary>
+        <p>Oui, un prénom ou un petit message est offert (jusqu’à 5 mots).</p>
+      </details>
+      <details>
+        <summary>Et pour les allergies ?</summary>
+        <p>Nos gâteaux contiennent du gluten, des œufs, du lait et parfois des fruits à coque. Pas de version sans gluten pour l’instant. Dites-nous vos allergies à la commande.</p>
+      </details>
+      <details>
+        <summary>Puis-je modifier ou annuler ma commande ?</summary>
+        <p>Oui, jusqu’à <span data-delai="gateaux"></span> avant pour les gâteaux, <span data-delai="mariages"></span> pour les mariages. Après, l’acompte n’est pas remboursé.</p>
+      </details>
+    </div>
   </div>
 </section>
 
@@ -576,11 +690,12 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
       <div>
         <!-- Les horaires s'écrivent ici automatiquement depuis le bloc RÉGLAGES (en bas) -->
         <dl class="horaires" id="horaires"></dl>
+        <p class="note-ferme" id="note-ferme" hidden></p>
         <p class="adresse"><svg class="ico"><use href="#i-pin"/></svg><span data-adresse></span></p>
         <div class="liens-contact">
           <a class="btn btn--plein" data-tel><svg class="ico"><use href="#i-tel"/></svg>Appeler <span data-tel-texte></span></a>
           <a class="btn btn--contour" data-wa=""><svg class="ico"><use href="#i-wa"/></svg>WhatsApp</a>
-          <a class="btn btn--contour" data-insta><svg class="ico"><use href="#i-insta"/></svg><span data-insta-texte></span></a>
+          <a class="lien-insta" data-insta><svg class="ico"><use href="#i-insta"/></svg><span data-insta-texte></span></a>
         </div>
       </div>
 
@@ -644,16 +759,46 @@ h2{font-size:clamp(1.9rem,7.4vw,3rem);line-height:1.12;text-wrap:balance}
    ========================================================== */
 const REGLAGES = {
   whatsapp: "2250707123456",                  // numéro WhatsApp : 225 + numéro, sans +, sans espaces
-  telephone: "+2250707123456",                // numéro du bouton « Appeler » (avec +225, sans espaces)
-  telephoneAffiche: "+225 07 07 12 34 56",    // comment le numéro s'écrit à l'écran
-  instagram: "akissi.patisserie",             // identifiant Instagram, sans @
+  telephone: "+2252722445566",                // numéro FIXE du bouton « Appeler » (avec +225, sans espaces)
+  telephoneAffiche: "+225 27 22 44 55 66",    // comment ce numéro s'écrit à l'écran
+  instagram: "akissi.patisserie.ci",          // identifiant Instagram, sans @
   adresse: "Cocody Riviera Palmeraie, Abidjan", // à remplacer par l'adresse précise de la boutique
   messageAccueil: "Bonjour Akissi, je voudrais passer commande.",
 
   // Horaires. jours : 0 = dimanche, 1 = lundi ... 6 = samedi. Heures au format "HH:MM"
+  // Un jour SANS "ouvre" / "ferme" = fermé toute la journée (comme le dimanche).
   horaires: [
-    { jours: [1, 2, 3, 4, 5, 6], libelle: "Lundi – Samedi", ouvre: "07:30", ferme: "19:00" },
-    { jours: [0],                libelle: "Dimanche",        ouvre: "08:00", ferme: "13:00" }
+    { jours: [1, 2, 3, 4, 5], libelle: "Lundi – Vendredi", ouvre: "07:30", ferme: "19:00" },
+    { jours: [6],             libelle: "Samedi",           ouvre: "07:30", ferme: "18:00" },
+    { jours: [0],             libelle: "Dimanche" }
+  ],
+
+  // ✏️ DÉLAIS DE COMMANDE : écrits ici une seule fois, repris automatiquement partout (Comment commander, FAQ)
+  delais: { gateaux: "48 heures", mariages: "7 jours" },
+
+  // ✏️ PROMOTIONS : la bannière montre la promo dont les dates couvrent aujourd'hui.
+  // Pour en ajouter une : copie un bloc { ... }, change les textes et les dates. Pas besoin de rien supprimer :
+  // une promo se cache toute seule après sa date "fin" (incluse). actif: false la coupe à la main.
+  //   debut / fin : format AAAA-MM-JJ (debut est facultatif)
+  //   detail : {fin} est remplacé par la date de fin écrite en toutes lettres
+  //   couleur : "mangue" (jaune), "rose" ou "pistache"
+  promos: [
+    {
+      actif: true, couleur: "mangue",
+      etiquette: "Saveur du mois",
+      titre: "Mangue-passion, -10\u00a0%",
+      detail: "Jusqu’au {fin}",
+      message: "Bonjour Akissi, je voudrais commander le gâteau mangue-passion (saveur du mois, -10 %).",
+      fin: "2026-11-30"
+    },
+    {
+      actif: true, couleur: "rose",
+      etiquette: "Noël",
+      titre: "Bûches de Noël",
+      detail: "Commandes ouvertes jusqu’au {fin}, à partir de 25\u00a0000\u00a0FCFA",
+      message: "Bonjour Akissi, je voudrais commander une bûche de Noël.",
+      debut: "2026-12-01", fin: "2026-12-20"
+    }
   ]
 };
 
@@ -688,23 +833,60 @@ const minAuj  = maintenant.getUTCHours() * 60 + maintenant.getUTCMinutes();
 const groupeDuJour = j => REGLAGES.horaires.find(g => g.jours.includes(j));
 
 $("#horaires").innerHTML = REGLAGES.horaires.map(g =>
-  `<div class="h-ligne${g.jours.includes(jourAuj) ? " auj" : ""}"><dt>${g.libelle}</dt><dd>${heureTexte(g.ouvre)} – ${heureTexte(g.ferme)}</dd></div>`
+  `<div class="h-ligne${g.jours.includes(jourAuj) ? " auj" : ""}"><dt>${g.libelle}</dt><dd>${g.ouvre ? heureTexte(g.ouvre) + " – " + heureTexte(g.ferme) : "Fermé"}</dd></div>`
 ).join("");
 
 function statutBoutique() {
   const g = groupeDuJour(jourAuj);
-  if (g && minAuj >= enMinutes(g.ouvre) && minAuj < enMinutes(g.ferme))
+  const ouvreAujourdhui = g && g.ouvre;            // false si le jour est « fermé »
+  if (ouvreAujourdhui && minAuj >= enMinutes(g.ouvre) && minAuj < enMinutes(g.ferme))
     return { ouvert: true, texte: `Ouvert maintenant, ferme à ${heureTexte(g.ferme)}` };
-  if (g && minAuj < enMinutes(g.ouvre))
+  if (ouvreAujourdhui && minAuj < enMinutes(g.ouvre))
     return { ouvert: false, texte: `Fermé, ouvre à ${heureTexte(g.ouvre)}` };
   for (let i = 1; i <= 7; i++) {
     const j = (jourAuj + i) % 7, n = groupeDuJour(j);
-    if (n) return { ouvert: false, texte: `Fermé, ouvre ${i === 1 ? "demain" : JOURS[j]} à ${heureTexte(n.ouvre)}` };
+    if (n && n.ouvre) return { ouvert: false, texte: `Fermé, ouvre ${i === 1 ? "demain" : JOURS[j]} à ${heureTexte(n.ouvre)}` };
   }
   return { ouvert: false, texte: "Fermé" };
 }
 const st = statutBoutique();
 $$("[data-statut]").forEach(e => { e.hidden = false; e.classList.toggle("ouvert", st.ouvert); $("[data-statut-texte]", e).textContent = st.texte; });
+
+/* ===== Bannière promo : on affiche la première promo dont les dates couvrent aujourd'hui ===== */
+const promo = REGLAGES.promos.find(p =>
+  p.actif !== false &&
+  maintenant >= new Date((p.debut || "2000-01-01") + "T00:00:00Z") &&
+  maintenant <= new Date(p.fin + "T23:59:59Z"));          // heure d'Abidjan = UTC
+if (promo) {
+  const finTexte = new Date(promo.fin + "T12:00:00Z").toLocaleDateString("fr-FR", { day: "numeric", month: "long", timeZone: "UTC" });
+  $("[data-promo-etiquette]").textContent = promo.etiquette;
+  $("[data-promo-titre]").textContent = promo.titre;
+  $("[data-promo-detail]").textContent = promo.detail.replace("{fin}", finTexte);
+  const lienPromo = $("[data-promo-wa]");
+  lienPromo.href = lienWhatsApp(promo.message);
+  lienPromo.target = "_blank"; lienPromo.rel = "noopener";
+  $(".saveur").classList.add("saveur--" + (promo.couleur || "mangue"));
+  $("#saveur-mois").hidden = false;
+}
+
+/* ===== Délais de commande : écrits dans RÉGLAGES, repris partout ===== */
+$$("[data-delai]").forEach(e => e.textContent = REGLAGES.delais[e.dataset.delai]);
+
+/* ===== Note « commandes le jour de fermeture » : calculée depuis les horaires ===== */
+(function () {
+  const ferme = REGLAGES.horaires.find(g => !g.ouvre);
+  if (!ferme) return;
+  const jourFerme = JOURS[ferme.jours[0]];
+  for (let i = 1; i <= 7; i++) {
+    const n = groupeDuJour((ferme.jours[0] + i) % 7);
+    if (n && n.ouvre) {
+      const e = $("#note-ferme");
+      e.textContent = `Commandes par WhatsApp possibles le ${jourFerme}, réponse le ${JOURS[(ferme.jours[0] + i) % 7]} matin.`;
+      e.hidden = false;
+      return;
+    }
+  }
+})();
 
 /* ===== Prix « dès » : lus automatiquement dans la section Prix ===== */
 const formatPrix = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0FCFA";
@@ -734,6 +916,45 @@ onglets.forEach((o, i) => {
 });
 choisirOnglet(onglets[0]);
 
+/* Les 4 cartes « dès » de l'accueil ouvrent directement le bon onglet des prix */
+$$("[data-onglet]").forEach(a => a.addEventListener("click", () => choisirOnglet($("#" + a.dataset.onglet))));
+
+/* ===== Outil « Quelle taille choisir ? » =====
+   Il lit les tailles (« 20 à 25 parts ») et les prix directement dans les onglets Prix :
+   si un prix ou une taille change là-bas, l'outil suit tout seul. */
+const TYPES_OUTIL = { "p-anniv": "gâteau d’anniversaire", "p-mariage": "gâteau de mariage" };   // pour le message WhatsApp
+function taillesDe(idPanneau) {
+  return $$(".ligne", $("#" + idPanneau)).map(l => {
+    const nombres = ($("small", l)?.textContent.match(/\d+/g) || []).map(Number);
+    return nombres.length ? { nom: l.querySelector(".nom").firstChild.textContent.trim(), parts: $("small", l).textContent.trim(), max: Math.max(...nombres), prix: $(".prix", l).textContent.trim() } : null;
+  }).filter(Boolean).sort((a, b) => a.max - b.max);
+}
+let typeOutil = "p-anniv";
+function majOutil() {
+  const n = parseInt($("#nb-invites").value, 10);
+  const res = $("#outil-resultat"), btn = $("#outil-wa");
+  if (!n || n < 1) { res.textContent = "Tapez le nombre d’invités, on vous dit quelle taille prendre."; btn.hidden = true; return; }
+  const gateau = TYPES_OUTIL[typeOutil], invites = n + (n > 1 ? " invités" : " invité");
+  const taille = taillesDe(typeOutil).find(t => t.max >= n);
+  btn.hidden = false;
+  if (taille) {
+    const le = /^[AEIOUÉÈH]/i.test(taille.nom) ? "l’" : "le ";
+    res.innerHTML = `Pour ${invites} : ${le}<strong>${taille.nom}</strong> (${taille.parts}), <strong>${taille.prix}</strong>.`;
+    btn.textContent = "Commander ce gâteau";
+    btn.href = lienWhatsApp(`Bonjour Akissi, je prépare un ${gateau} pour ${invites}. Je pense prendre ${le}${taille.nom} (${taille.prix}). Pouvez-vous confirmer la disponibilité ?`);
+  } else {
+    res.textContent = `Pour ${invites}, c’est du sur-mesure : on vous prépare un devis.`;
+    btn.textContent = "Demander un devis";
+    btn.href = lienWhatsApp(`Bonjour Akissi, je voudrais un devis pour un ${gateau} de ${invites}.`);
+  }
+}
+$("#nb-invites").addEventListener("input", majOutil);
+$$(".bascule-btn").forEach(b => b.addEventListener("click", () => {
+  $$(".bascule-btn").forEach(x => x.setAttribute("aria-pressed", x === b));
+  typeOutil = b.dataset.type;
+  majOutil();
+}));
+
 /* ===== Menu du téléphone ===== */
 const burger = $("#burger"), menu = $("#menu");
 burger.addEventListener("click", () => {
@@ -749,13 +970,16 @@ let visibles = tuiles;
 $$(".filtre").forEach(b => b.addEventListener("click", () => {
   $$(".filtre").forEach(x => x.setAttribute("aria-pressed", x === b));
   const cat = b.dataset.filtre;
+  $("#grille").dataset.mode = cat === "tout" ? "tout" : "filtre";   // le bouton « Voir toutes » ne concerne que « Tout »
   tuiles.forEach(t => t.hidden = !(cat === "tout" || t.dataset.cat === cat));
   visibles = tuiles.filter(t => !t.hidden);
 }));
 
+$("#voir-plus").addEventListener("click", () => $("#grille").classList.add("deplie"));
+
 /* ===== Galerie : photo agrandie ===== */
 const lb = $("#lb"), lbImg = $("#lb-img");
-const NOMS_CAT = { anniversaire: "Anniversaire", mariage: "Mariage", petits: "Petits gâteaux" };
+const NOMS_CAT = { anniversaire: "Anniversaire", mariage: "Mariage", petits: "Douceurs", vienn: "Viennoiseries" };
 let indexPhoto = 0, dernierFocus = null;
 
 function afficherPhoto(i) {
